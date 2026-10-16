@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard - EMS</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>EMS &middot; My Dashboard</h1>
+  <div class="header-right">
+    <span id="welcomeText">Welcome</span>
+    <button id="logoutBtn">Logout</button>
+  </div>
+</header>
+
+<nav class="app-nav">
+  <button class="nav-btn active" data-target="dashboardSection">Dashboard</button>
+  <button class="nav-btn" data-target="profileSection">My Profile</button>
+  <button class="nav-btn" data-target="departmentSection">Department</button>
+  <button class="nav-btn" data-target="leaveSection">Leave</button>
+  <button class="nav-btn" data-target="payslipSection">Payslips</button>
+</nav>
+
+<main>
+
+  <!-- DASHBOARD SUMMARY -->
+  <section id="dashboardSection" class="section">
+    <div class="welcome-banner">
+      <h2 id="bannerName">Welcome back!</h2>
+      <p id="bannerSub">Here is a quick summary of your account.</p>
+    </div>
+    <div class="summary-grid" id="summaryGrid">
+      <div class="summary-card c-purple">
+        <div class="summary-num" id="sumLeaveAvailable">-</div>
+        <div class="summary-label">Total Leave Days Available</div>
+      </div>
+      <div class="summary-card c-gold">
+        <div class="summary-num" id="sumLeavePending">-</div>
+        <div class="summary-label">Pending Leave Requests</div>
+      </div>
+      <div class="summary-card c-teal">
+        <div class="summary-num" id="sumPayslipCount">-</div>
+        <div class="summary-label">Payslips Generated</div>
+      </div>
+      <div class="summary-card c-cherry">
+        <div class="summary-num" id="sumLatestSalary">-</div>
+        <div class="summary-label">Latest Net Salary</div>
+      </div>
+      <div class="summary-card c-navy">
+        <div class="summary-num" id="sumLeaveApproved">-</div>
+        <div class="summary-label">Leaves Approved</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profileSection" class="section" hidden>
+    <div class="card">
+      <h2>My Details</h2>
+      <div id="profileCard"></div>
+    </div>
+  </section>
+
+  <!-- DEPARTMENT -->
+  <section id="departmentSection" class="section" hidden>
+    <div class="card">
+      <h2>My Department</h2>
+      <div id="departmentCard"></div>
+    </div>
+  </section>
+
+  <!-- LEAVE -->
+  <section id="leaveSection" class="section" hidden>
+    <div class="balance-cards">
+      <div class="balance-card"><div class="num" id="casualLeaves">-</div><div class="label">Casual Leaves</div></div>
+      <div class="balance-card"><div class="num" id="sickLeaves">-</div><div class="label">Sick Leaves</div></div>
+      <div class="balance-card"><div class="num" id="earnedLeaves">-</div><div class="label">Earned Leaves</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Apply for Leave</h2>
+      <form id="leaveForm">
+        <div class="form-grid">
+          <div>
+            <label>Leave Type</label>
+            <select id="leaveType" required>
+              <option value="CASUAL">Casual</option>
+              <option value="SICK">Sick</option>
+              <option value="EARNED">Earned</option>
+            </select>
+          </div>
+          <div>
+            <label>Start Date</label>
+            <input type="date" id="leaveStart" required>
+          </div>
+          <div>
+            <label>End Date</label>
+            <input type="date" id="leaveEnd" required>
+          </div>
+          <div>
+            <label>Reason</label>
+            <input type="text" id="leaveReason">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Submit Request</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>My Leave History</h2>
+      <table id="myLeaveTable">
+        <thead><tr><th>Type</th><th>Duration</th><th>Days</th><th>Reason</th><th>Status</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PAYSLIPS -->
+  <section id="payslipSection" class="section" hidden>
+    <div class="card">
+      <h2>My Payslips</h2>
+      <table id="payslipTable">
+        <thead><tr><th>Month/Year</th><th>Basic</th><th>Allowances</th><th>Deductions</th><th>Net Salary</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/particles.js"></script>
+<script src="js/common.js"></script>
+<script src="js/employee.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - EMS</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>EMS &middot; Admin Panel</h1>
+  <div class="header-right">
+    <span id="welcomeText">Welcome</span>
+    <button id="logoutBtn">Logout</button>
+  </div>
+</header>
+
+<nav class="app-nav">
+  <button class="nav-btn active" data-target="dashboardSection">Dashboard</button>
+  <button class="nav-btn" data-target="employeesSection">Employees</button>
+  <button class="nav-btn" data-target="departmentsSection">Departments</button>
+  <button class="nav-btn" data-target="payrollSection">Payroll</button>
+  <button class="nav-btn" data-target="leavesSection">Leave Requests</button>
+</nav>
+
+<main>
+
+  <!-- DASHBOARD SUMMARY -->
+  <section id="dashboardSection" class="section">
+    <div class="welcome-banner">
+      <h2 id="bannerName">Welcome, Admin!</h2>
+      <p>Here is an overview of the whole organization.</p>
+    </div>
+    <div class="summary-grid" id="summaryGrid">
+      <div class="summary-card c-navy">
+        <div class="summary-num" id="sumTotalEmployees">-</div>
+        <div class="summary-label">Total Employees</div>
+      </div>
+      <div class="summary-card c-teal">
+        <div class="summary-num" id="sumActiveEmployees">-</div>
+        <div class="summary-label">Active Employees</div>
+      </div>
+      <div class="summary-card c-purple">
+        <div class="summary-num" id="sumTotalDepartments">-</div>
+        <div class="summary-label">Departments</div>
+      </div>
+      <div class="summary-card c-cherry">
+        <div class="summary-num" id="sumPayrollRecords">-</div>
+        <div class="summary-label">Payroll Records</div>
+      </div>
+      <div class="summary-card c-gold">
+        <div class="summary-num" id="sumPendingLeaves">-</div>
+        <div class="summary-label">Pending Leave Requests</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPLOYEES -->
+  <section id="employeesSection" class="section" hidden>
+    <div class="card">
+      <h2 id="employeeFormTitle">Register Employee</h2>
+      <form id="employeeForm">
+        <div class="form-grid">
+          <div>
+            <label>Full Name</label>
+            <input type="text" id="empName" required>
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" id="empEmail" required>
+          </div>
+          <div>
+            <label>Phone</label>
+            <input type="text" id="empPhone">
+          </div>
+          <div>
+            <label>Address</label>
+            <input type="text" id="empAddress">
+          </div>
+          <div>
+            <label>Designation</label>
+            <input type="text" id="empDesignation">
+          </div>
+          <div>
+            <label>Department</label>
+            <select id="empDepartment"></select>
+          </div>
+          <div>
+            <label>Basic Salary (&#8377;)</label>
+            <input type="number" id="empSalary" min="0" step="0.01" required>
+          </div>
+          <div>
+            <label>Date of Joining</label>
+            <input type="date" id="empJoining" required>
+          </div>
+          <div>
+            <label>Status</label>
+            <select id="empStatus">
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="INACTIVE">INACTIVE</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Save Employee</button>
+          <button type="button" id="cancelEditEmployee" class="btn-secondary" hidden>Cancel Edit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>All Employees</h2>
+      <table id="employeeTable">
+        <thead>
+          <tr><th>Name</th><th>Email</th><th>Designation</th><th>Department</th><th>Salary</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DEPARTMENTS -->
+  <section id="departmentsSection" class="section" hidden>
+    <div class="card">
+      <h2 id="departmentFormTitle">Add Department</h2>
+      <form id="departmentForm">
+        <div class="form-grid">
+          <div>
+            <label>Department Name</label>
+            <input type="text" id="deptName" required>
+          </div>
+          <div>
+            <label>Description</label>
+            <input type="text" id="deptDescription">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Save Department</button>
+          <button type="button" id="cancelEditDepartment" class="btn-secondary" hidden>Cancel Edit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>All Departments</h2>
+      <table id="departmentTable">
+        <thead><tr><th>Name</th><th>Description</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PAYROLL -->
+  <section id="payrollSection" class="section" hidden>
+    <div class="card">
+      <h2>Generate Payroll</h2>
+      <form id="payrollForm">
+        <div class="form-grid">
+          <div>
+            <label>Employee</label>
+            <select id="payrollEmployee" required></select>
+          </div>
+          <div>
+            <label>Month (1-12)</label>
+            <input type="number" id="payrollMonth" min="1" max="12" required>
+          </div>
+          <div>
+            <label>Year</label>
+            <input type="number" id="payrollYear" min="2000" max="2100" required>
+          </div>
+          <div>
+            <label>Allowances (&#8377;)</label>
+            <input type="number" id="payrollAllowances" min="0" step="0.01" value="0">
+          </div>
+          <div>
+            <label>Deductions (&#8377;)</label>
+            <input type="number" id="payrollDeductions" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Generate Payslip</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Payroll Records</h2>
+      <table id="payrollTable">
+        <thead><tr><th>Employee</th><th>Month/Year</th><th>Basic</th><th>Allowances</th><th>Deductions</th><th>Net Salary</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- LEAVES -->
+  <section id="leavesSection" class="section" hidden>
+    <div class="card">
+      <h2>All Leave Requests</h2>
+      <table id="leaveTable">
+        <thead><tr><th>Employee</th><th>Type</th><th>Duration</th><th>Days</th><th>Reason</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/particles.js"></script>
+<script src="js/common.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

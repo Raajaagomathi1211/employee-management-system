@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Employee Management System</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="login-wrapper">
+  <div class="login-card">
+    <h1>EMS</h1>
+    <p class="subtitle">Employee Management System</p>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" required placeholder="e.g. admin" autocomplete="username">
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="123" autocomplete="current-password">
+      <button type="submit">Login</button>
+      <p id="loginError" class="error-text"></p>
+    </form>
+    <div class="hint">
+      <strong>Demo credentials</strong><br>
+      Admin &rarr; username: <code>admin</code> / password: <code>123</code><br>
+      Employee &rarr; username: <code>arunkumar</code> / password: <code>123</code>
+    </div>
+  </div>
+</div>
+<script src="js/particles.js"></script>
+<script src="js/common.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
